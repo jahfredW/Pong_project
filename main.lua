@@ -54,10 +54,15 @@ if balle.y > love.graphics.getHeight() - balle.hauteur then
   balle.vitesse_y = balle.vitesse_y * -1
 end
   
-if balle.x < pad.largeur and balle.y >= pad.y and balle.y <= pad.y + pad.hauteur then
-  balle.vitesse_x = balle.vitesse_x * -1
-  balle.vitesse_y = balle.vitesse_y * 1
-end  
+-- La balle a-t-elle atteint la raquette ?
+if balle.x <= pad.x + pad.largeur then
+  -- Tester maintenant si la balle est sur la raquette ou pas
+  if balle.y + balle.hauteur > pad.y and balle.y < pad.y + pad.hauteur    
+  then
+    balle.vitesse_x = balle.vitesse_x * -1
+    balle.x = pad.x + pad.largeur
+  end
+end 
 
 end
 
